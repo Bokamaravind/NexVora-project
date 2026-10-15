@@ -13,8 +13,8 @@ const SERVICES = [
 ];
 
 const PACKAGES = [
-  'Starter - ₹1,999',
-  'Standard - ₹2,499',
+  'Starter - ₹999',
+  'Standard - ₹1,999',
   'Advanced - ₹2,999',
   'Not sure - need a quote',
 ];
