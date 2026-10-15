@@ -5,10 +5,10 @@ import Counter from './Counter';
 
 const PLANS = [
   {
-    id: 'Starter - ₹1,999',
+    id: 'Starter - ₹999',
     name: 'Starter',
     for: 'A focused project with a clear, small scope.',
-    price: 1999,
+    price: 999,
     note: 'Starting price',
     features: [
       'Single landing page or simple automation',
@@ -18,10 +18,10 @@ const PLANS = [
     ],
   },
   {
-    id: 'Standard - ₹2,499',
+    id: 'Standard - ₹1,999',
     name: 'Standard',
     for: 'A complete website or a working AI or automation tool.',
-    price: 2499,
+    price: 1999,
     note: 'Typical price, varies with requirements',
     featured: true,
     features: [
@@ -39,10 +39,12 @@ const PLANS = [
     price: 2999,
     note: 'Upper range, based on requirements',
     features: [
+      'AI agents',
       'AI-powered full-stack web app',
       'Machine learning model with API',
       'Admin dashboard and user login',
       'Documentation and walkthrough',
+      'maintenance and support after delivery',
     ],
   },
 ];
@@ -66,7 +68,7 @@ export default function Pricing() {
           <span className="eyebrow">Pricing</span>
           <h2>Simple, transparent pricing</h2>
           <p>
-            Pick the package closest to your project. Prices range from ₹1,999 to ₹2,999 depending on
+            Pick the package closest to your project. Prices range from ₹999 to ₹2,999 depending on
             your requirements, and we confirm the exact amount before any work begins.
           </p>
         </Reveal>
