@@ -105,7 +105,7 @@ export default function Hero() {
           </div>
 
           <p className="hero-note rise" style={{ '--d': '940ms' }}>
-            Packages from <strong>₹1,999</strong>. Final price depends on your requirements.
+            Packages from <strong>₹999</strong>. Final price depends on your requirements.
           </p>
         </div>
 
@@ -139,7 +139,7 @@ export default function Hero() {
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                     <path d={s.icon} />
                   </svg>
-                  <span>{s.text}</span>
+                  <span>{s.text}</span>  
                   <span className="t">{s.t}</span>
                 </div>
               ))}

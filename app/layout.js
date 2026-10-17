@@ -21,7 +21,7 @@ const sans = Public_Sans({
 export const metadata = {
   title: 'NexVora — Building Intelligent Solutions',
   description:
-    'NexVora builds AI agents, automations, machine learning models, and full-stack websites. Packages from ₹1,999.',
+    'NexVora builds AI agents, automations, machine learning models, and full-stack websites. Packages from ₹999.',
 };
 
 export const viewport = {
