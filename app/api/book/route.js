@@ -3,17 +3,16 @@ import nodemailer from 'nodemailer';
 export const runtime = 'nodejs'; // Nodemailer needs Node, not the Edge runtime
 
 /* ---------- Email transport ---------- */
-const port = Number(process.env.SMTP_PORT) || 465;
-
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port,
-  secure: port === 465, // true for 465, false for 587
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-});
+const createTransporter = (port) =>
+  nodemailer.createTransport({
+    host: process.env.SMTP_HOST.trim(),
+    port,
+    secure: port === 465, // true for 465, false for 587
+    auth: {
+      user: process.env.SMTP_USER.trim(),
+      pass: process.env.SMTP_PASS,
+    },
+  });
 
 /* ---------- Helpers ---------- */
 const escapeHtml = (value = '') =>
@@ -104,13 +103,29 @@ export async function POST(request) {
       ${row('Details', escapeHtml(message).replace(/\n/g, '<br>'))}
     </table>`;
 
-  const fromAddress = process.env.MAIL_FROM || process.env.SMTP_USER;
+  const requiredConfig = ['SMTP_HOST', 'SMTP_USER', 'SMTP_PASS', 'COMPANY_EMAIL'];
+  const missingConfig = requiredConfig.filter((key) => !process.env[key]?.trim());
+  const port = Number(process.env.SMTP_PORT || 465);
+  if (missingConfig.length || !Number.isInteger(port) || port < 1 || port > 65535) {
+    const issue = missingConfig.length
+      ? `Missing environment variables: ${missingConfig.join(', ')}`
+      : 'SMTP_PORT must be a valid port number.';
+    console.error('Booking email is not configured:', issue);
+    return Response.json(
+      { message: 'Booking email is temporarily unavailable. Please contact us directly.' },
+      { status: 503 }
+    );
+  }
+
+  const transporter = createTransporter(port);
+  const fromAddress = process.env.MAIL_FROM?.trim() || process.env.SMTP_USER.trim();
+  const companyEmail = process.env.COMPANY_EMAIL.trim();
 
   try {
     // 1) Email to the company
     await transporter.sendMail({
       from: `"NexVora Website" <${fromAddress}>`,
-      to: process.env.COMPANY_EMAIL,
+      to: companyEmail,
       replyTo: email,
       subject: `New booking: ${service} from ${name}`,
       html: wrapEmail('New service booking', details),
@@ -121,7 +136,7 @@ export async function POST(request) {
     await transporter.sendMail({
       from: `"NexVora" <${fromAddress}>`,
       to: email,
-      replyTo: process.env.COMPANY_EMAIL,
+      replyTo: companyEmail,
       subject: 'We received your request - NexVora',
       html: wrapEmail(
         `Thank you, ${escapeHtml(name)}`,

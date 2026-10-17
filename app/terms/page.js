@@ -96,7 +96,7 @@ export default function TermsPage() {
         <p>
           We may update these terms by posting a revised version on this page. The “Last
           updated” date indicates when the current version was published. For questions
-          about these terms, email <a href="mailto:hello@nexvora.com">hello@nexvora.com</a>.
+          about these terms, email <a href="mailto:companynexvora@gmail.com">companynexvora@gmail.com</a>.
         </p>
       </section>
     </LegalPage>

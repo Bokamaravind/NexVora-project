@@ -16,6 +16,7 @@ export default function Footer() {
         <div className="foot-bottom">
           <span>Building Intelligent Solutions</span>
           <div className="foot-bottom-links">
+            <a href="mailto:companynexvora@gmail.com">companynexvora@gmail.com</a>
             <a href="/terms">Terms &amp; Conditions</a>
             <a href="/privacy">Privacy Policy</a>
             <span>&copy; {new Date().getFullYear()} NexVora. All rights reserved.</span>

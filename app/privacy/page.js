@@ -75,7 +75,7 @@ export default function PrivacyPage() {
           Depending on where you live, you may have rights to request access to, correction
           of, or deletion of your personal information, or to object to or restrict certain
           processing. To make a privacy request or ask a question, contact us at{' '}
-          <a href="mailto:hello@nexvora.com">hello@nexvora.com</a>. We may need to verify
+          <a href="mailto:companynexvora@gmail.com">companynexvora@gmail.com</a>. We may need to verify
           your request before acting on it.
         </p>
       </section>
@@ -94,7 +94,7 @@ export default function PrivacyPage() {
         <p>
           We may update this policy as our practices or requirements change. Any revised
           version will appear on this page with an updated date. For privacy questions or
-          requests, email <a href="mailto:hello@nexvora.com">hello@nexvora.com</a>.
+          requests, email <a href="mailto:companynexvora@gmail.com">companynexvora@gmail.com</a>.
         </p>
       </section>
     </LegalPage>
